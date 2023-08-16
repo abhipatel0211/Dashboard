@@ -1,0 +1,9 @@
+@tailwind components;
+@layer components {
+  .maintable {
+    display: grid;
+    grid-template-columns: repeat(2, maxmin(fit-content, 1fr));
+    grid-template-rows: repeat(1, maxmin(2, 1fr));
+    /* grid-template-columns: minmax(w-1/2) minmax(w-1/2); */
+  }
+}
