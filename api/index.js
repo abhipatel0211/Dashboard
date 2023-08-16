@@ -96,7 +96,7 @@ app.post("/login", async (req, res) => {
             res
               .cookie("token", token, {
                 // domain: "localhost",
-                path: "/",
+                // path: "/",
                 // secure: true,
                 // httpOnly: true,
                 expires: new Date(Date.now() + 50000),
@@ -155,10 +155,10 @@ app.post("/register", async (req, res) => {
           // console.log(token);
           res
             .cookie("token", token, {
-              domain: "localhost",
+              // domain: "localhost",
               // path: '/',
-              secure: true,
-              httpOnly: true,
+              // secure: true,
+              // httpOnly: true,
               expires: new Date(Date.now() + 5000),
             })
             .status(201)
