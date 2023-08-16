@@ -19,7 +19,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: `${process.env.CLIENT_URL}`, // Replace with the URL of your frontend application
+    origin: "https://oru-assignment.vercel.app/", // Replace with the URL of your frontend application
     credentials: true, // Set the "Access-Control-Allow-Credentials" header to "true"
   })
 );
