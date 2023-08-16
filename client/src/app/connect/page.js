@@ -6,7 +6,7 @@ import Card from "@/components/Card";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
-const connection = () => {
+const Connection = () => {
   const router = useRouter();
   function logout() {
     axios
@@ -78,4 +78,4 @@ const connection = () => {
   );
 };
 
-export default connection;
+export default Connection;
