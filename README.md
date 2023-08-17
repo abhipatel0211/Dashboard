@@ -1,13 +1,15 @@
-# oru_assignment vercel link :- https://oru-assignment.vercel.app/
+# vercel link :- https://oru-assignment.vercel.app/
 # username:- test1 
 # password :- test
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Getting Started with frontend
 
-First, run the development server:
+First open client, run the development server:
 
 ```bash
+npm i
+
 npm run dev
 # or
 yarn dev
@@ -15,11 +17,28 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## for Backend 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+First open api , run ``` npm i ``` in the terminal
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Second create ```.env``` file and write the below code in it
+```
+MONGO_URL = "write mongo url here"
+
+JWT_SECRET="make jwt secret here" 
+
+CLIENT_URL="http://localhost:3000/"
+```
+Now in api run :
+
+```bash
+npm start
+# or
+nodemon index.js
+```
+and the backend server will be started  on localhost 
+
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:5000/test](http://localhost:5000/test). This endpoint can be edited in `api/index.js`.
 
 ## Learn More
 
