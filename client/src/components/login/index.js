@@ -86,8 +86,8 @@ function Register() {
 
   return (
     <>
-      <div className="flex bg-[#bd91e6] m-2 h-full justify-center">
-        <div className=" h-screen w-1/2 max-md:w-full  flex items-center">
+      <div className="flex m-2 h-full justify-center">
+        <div className="h-screen w-1/2 max-md:w-full  flex items-center">
           <form className="w-64 mx-auto" onSubmit={handlesubmit}>
             {/* <p>Register</p> */}
             <input
@@ -96,6 +96,7 @@ function Register() {
               className="block w-full p-2 mb-2 border"
               type="text"
               placeholder="username"
+              value=""test1"
               required
             />
             <input
@@ -103,6 +104,7 @@ function Register() {
               onChange={(ev) => setpassword(ev.target.value)}
               className="block w-full p-2 mb-2 border"
               type="password"
+              value="test"
               placeholder="password"
               required
             />
@@ -110,7 +112,7 @@ function Register() {
             <button className="bg-[#32CD32] text-white block w-full rounded-sm p-2">
               {Alreadylogedinorregister === "register" ? "Register" : "Login"}
             </button>
-
+            
             {Alreadylogedinorregister === "register" && (
               <div className="text-center mt-4">
                 Already a user ?
@@ -133,6 +135,7 @@ function Register() {
                 </button>
               </div>
             )}
+            <p> Click on login to continue </p>
           </form>
         </div>
       </div>
