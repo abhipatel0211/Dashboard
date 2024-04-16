@@ -15,6 +15,7 @@ function Register() {
   const { setemail: setLoggedInUsername, setId } = useContext(UserContext);
   async function handlesubmit(e) {
     e.preventDefault();
+    
     const url = Alreadylogedinorregister === "register" ? "register" : "login";
     try {
       // alert("complete");
@@ -22,7 +23,7 @@ function Register() {
       console.log(`hello ${config.REACT_APP_BACKEND_URL}/${url}`);
       // var xhr = new XMLHttpRequest();
       // xhr.withCredentials = true;
-
+      router.push("/profile", undefined, { shallow: true });
       // Rest of your XMLHttpRequest code
 
       if (url === "register") {
