@@ -96,7 +96,6 @@ function Register() {
               className="block w-full p-2 mb-2 border"
               type="text"
               placeholder="username"
-              value=""test1"
               required
             />
             <input
@@ -104,7 +103,6 @@ function Register() {
               onChange={(ev) => setpassword(ev.target.value)}
               className="block w-full p-2 mb-2 border"
               type="password"
-              value="test"
               placeholder="password"
               required
             />
