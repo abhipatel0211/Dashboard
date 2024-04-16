@@ -8,8 +8,8 @@ import { useRouter } from "next/navigation";
 
 function Register() {
   const router = useRouter();
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
+  const [email, setemail] = useState("test1");
+  const [password, setpassword] = useState("test");
   const [Alreadylogedinorregister, setAlreadylogedinorregister] =
     useState("login");
   const { setemail: setLoggedInUsername, setId } = useContext(UserContext);
