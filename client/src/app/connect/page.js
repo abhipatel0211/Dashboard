@@ -35,20 +35,20 @@ const Connection = () => {
       });
   }
   return (
-    <div className="flex h-screen">
-      <div className="w-1/5">
-        <div className="w-1/6 h-full flex shadow-2xl flex-col flex-grow fixed max-md:hidden">
-          <Sidebar />
-          <button
-            className="flex mb-3 justify-center font-bold text-lg"
-            onClick={logout}
-          >
-            Log Out
-          </button>
-          {/* <div className="mb-0 bottom-0">hello</div> */}
-        </div>
+    <div className="flex flex-row">
+      <div className="w-1/6 flex h-screen fixed shadow-2xl flex-col flex-grow max-lg:hidden">
+        {/* <div className=""> */}
+        <Sidebar />
+        <button
+          className="flex mb-3 justify-center font-bold text-lg"
+          onClick={logout}
+        >
+          Log Out
+        </button>
+        {/* <div className="mb-0 bottom-0">hello</div> */}
+        {/* </div> */}
       </div>
-      <div className="h-full flex flex-col w-full">
+      <div className="h-screen flex flex-col lg:ml-[16.666%] max-md:m-0">
         <Navbar />
         {/* <div className="">hello</div> */}
         {/* <MyConnection /> */}

@@ -40,7 +40,7 @@ const Profile = () => {
   }
   return (
     <div className="flex flex-row">
-      <div className="w-1/6 flex h-screen fixed shadow-2xl flex-col flex-grow max-md:hidden">
+      <div className="w-1/6 flex h-screen fixed shadow-2xl flex-col flex-grow max-lg:hidden">
         {/* <div className=""> */}
         <Sidebar />
         <button
