@@ -39,6 +39,17 @@ const Navbar = ({ varient, name = "Vishnu Swaroop" }) => {
         console.error("Logout failed:", error);
       });
   }
+
+  const selectMyprofile = () => {
+    console.log("profile");
+    router.push("/profile", undefined, { shallow: true });
+  };
+  const selectMyconnection = (e) => {
+    e.preventDefault();
+    console.log("myconn");
+    router.push("/connect", undefined, { shallow: true });
+  };
+  
   return (
     <div className="h-20 flex justify-end items-center w-full shadow-lg sticky top-0 bg-white">
       <div className="flex items-center gap-3 mr-14 bg-white">
@@ -88,6 +99,20 @@ const Navbar = ({ varient, name = "Vishnu Swaroop" }) => {
               {/* </div> */}
             </DropdownTrigger>
             <DropdownMenu aria-label="Static Actions">
+              <DropdownItem
+                className="text-black"
+                color="success"
+                onClick={selectMyprofile}
+              >
+                Profile
+              </DropdownItem>
+              <DropdownItem
+                className="text-black"
+                color="success"
+                onClick={selectMyconnection}
+              >
+                Connection Page
+              </DropdownItem>
               <DropdownItem
                 key="delete"
                 className="text-danger"
