@@ -39,7 +39,7 @@ const Profile = () => {
       });
   }
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row bg-white">
       <div className="w-1/6 flex h-screen fixed shadow-2xl flex-col flex-grow max-lg:hidden">
         {/* <div className=""> */}
         <Sidebar />
@@ -52,7 +52,7 @@ const Profile = () => {
         {/* <div className="mb-0 bottom-0">hello</div> */}
         {/* </div> */}
       </div>
-      <div className="h-screen flex flex-col lg:ml-[16.666%] max-md:m-0">
+      <div className="h-screen flex  bg-white flex-col lg:ml-[16.666%] max-md:m-0">
         <Navbar />
         {/* <div className="">hello</div> */}
         {/* <MyConnection /> */}

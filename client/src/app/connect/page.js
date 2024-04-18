@@ -36,7 +36,7 @@ const Connection = () => {
   }
   return (
     <div className="flex flex-row">
-      <div className="w-1/6 flex h-screen fixed shadow-2xl flex-col flex-grow max-lg:hidden">
+      <div className="w-1/6 flex h-screen fixed shadow-2xl flex-col flex-grow max-lg:hidden bg-white">
         {/* <div className=""> */}
         <Sidebar />
         <button
@@ -48,7 +48,7 @@ const Connection = () => {
         {/* <div className="mb-0 bottom-0">hello</div> */}
         {/* </div> */}
       </div>
-      <div className="h-screen flex flex-col lg:ml-[16.666%] max-md:m-0">
+      <div className="h-screen bg-white flex flex-col lg:ml-[16.666%] max-md:m-0">
         <Navbar />
         {/* <div className="">hello</div> */}
         {/* <MyConnection /> */}
