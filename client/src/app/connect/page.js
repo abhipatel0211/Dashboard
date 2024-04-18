@@ -48,7 +48,7 @@ const Connection = () => {
         {/* <div className="mb-0 bottom-0">hello</div> */}
         {/* </div> */}
       </div>
-      <div className="h-screen bg-white flex flex-col lg:ml-[16.666%] max-md:m-0">
+      <div className="h-screen bg-white flex flex-col lg:ml-[16.666%] max-md:m-0 text-black">
         <Navbar />
         {/* <div className="">hello</div> */}
         {/* <MyConnection /> */}
