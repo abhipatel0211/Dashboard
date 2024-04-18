@@ -25,7 +25,7 @@ const Myprofile = ({
   Education_details = "Lorem ipsum dolor sit amet consectetur. Erat auctor a aliquam vel congue luctus. Leo diam cras neque mauris ac arcu elit ipsum dolor sit amet consectetur.",
 }) => {
   return (
-    <div className="h-40 bg-blue-900  m-4 rounded-lg p-3 flex-shrink-0 flex-wrap">
+    <div className="h-40 bg-blue-900  m-4 rounded-lg p-3 flex-shrink-0 flex-wrap text-black">
       <p className="text-white">My Profile</p>
       <div className="grid  bg-white p-4 mt-16 rounded-lg lg:grid-cols-2 grid-rows-1 gap-3">
         {/* Profile left side start */}
