@@ -9,8 +9,8 @@ const Myprofile = ({
   phone = "+91 7778889991",
   about = "Lorem ipsum dolor sit amet consectetur. Erat auctor a aliquam vel congue luctus. Leo diam cras neque mauris ac arcu elit ipsum dolor sit amet consectetur.",
   skills = "Nextjs,TypeScript",
-  course = "Python",
-  course_by = "Coding Ninjas",
+  Certificate = "Python",
+  Certificate_by = "Coding Ninjas",
   Exp1_time_period = "7 Years (2014-2021)",
   Exp1_type = "Full Time",
   Exp1_company = "Oruphones",
@@ -165,8 +165,8 @@ const Myprofile = ({
                 </svg>
               </div>
               <div className="flex flex-col justify-center w-full">
-                <p className="justify-center">{course}</p>
-                <p>{course_by}</p>
+                <p className="justify-center">{Certificate}</p>
+                <p>{Certificate_by}</p>
               </div>
             </div>
           </div>
