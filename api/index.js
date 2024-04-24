@@ -5,35 +5,29 @@ const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 dotenv.config();
 const User = require("./models/Users");
+const Profile = require("./models/Profile");
 const bcrypt = require("bcryptjs");
-
 const cors = require("cors");
+
 const app = express();
-app.use(cors());
 
-console.log(process.env.CLIENT_URL);
-
-app.use(cors());
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
-
-app.use(
-  cors({
-    origin: "https://dashboard-abhi.vercel.app", // Replace with the URL of your frontend application
-    credentials: true, // Set the "Access-Control-Allow-Credentials" header to "true"
-  })
-);
 
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
-    console.log("Connected mongoose");
+    console.log("Connected to MongoDB");
   })
   .catch((err) => {
-    console.log("Error Generated" + err);
+    console.log("Error connecting to MongoDB:", err);
   });
+
 const jwtSecret = process.env.JWT_SECRET;
 const bcryptSalt = bcrypt.genSaltSync(10);
+
+app.options("*", cors()); // Handle preflight requests
 
 app.get("/", async (req, res) => {
   res.json("test ok");
@@ -57,20 +51,122 @@ function getUserDataFromRequest(req) {
   });
 }
 
-app.get("/profile", (req, res) => {
+app.post("/profile", async (req, res) => {
   const token = req.cookies?.token;
+  const {
+    email,
+    name,
+    phone,
+    about,
+    skills,
+    Certificate,
+    Certificate_by,
+    Exp1_time_period,
+    Exp1_type,
+    Exp1_company,
+    Exp1_role,
+    Exp2_time_period,
+    Exp2_type,
+    Exp2_company,
+    Exp2_role,
+    Education,
+    Education_year,
+    Education_stream,
+    Education_details,
+  } = req.body;
   if (token) {
-    // console.log("test");
-    jwt.verify(token, jwtSecret, {}, (err, Userdata) => {
+    jwt.verify(token, jwtSecret, {}, async (err, Userdata) => {
       if (err) {
         throw err;
       }
-      res.json(Userdata);
+      const found_data = await Profile.findOne({ email: Userdata.email });
+      if (Userdata.email != email) {
+        res.json("email not matched");
+      }
+      if (found_data) {
+        res.json("User already exists!!");
+      } else {
+        const newProfile = new Profile({
+          email,
+          name,
+          phone,
+          about,
+          skills,
+          Certificate,
+          Certificate_by,
+          Exp1_time_period,
+          Exp1_type,
+          Exp1_company,
+          Exp1_role,
+          Exp2_time_period,
+          Exp2_type,
+          Exp2_company,
+          Exp2_role,
+          Education,
+          Education_year,
+          Education_stream,
+          Education_details,
+        });
+        const savedProfile = await newProfile.save();
+        res.status(201).json("user created successfully");
+      }
     });
   } else {
     res.status(401).json("no token");
   }
 });
+
+app.get("/profile", async (req, res) => {
+  const token = req.cookies?.token;
+  console.log("inside profile");
+  if (token) {
+    console.log("inside profile if");
+    try {
+      const Userdata = jwt.verify(token, jwtSecret, {});
+      const found_data = await Profile.findOne({ email: Userdata.email });
+
+      if (found_data) {
+        console.log("user found");
+        console.log(found_data);
+        res.json({ found_data }); // Send the found user data
+      } else {
+        console.log("user not found");
+        res.status(404).json({ error: "User not found" });
+      }
+    } catch (err) {
+      console.error("JWT verification error:", err);
+      res.status(401).json({ error: "Invalid token" });
+    }
+  } else {
+    res.status(401).json({ error: "No token provided" });
+  }
+});
+
+// app.get("/profile", async (req, res) => {
+//   const token = req.cookies?.token;
+//   console.log("inside profile");
+//   // const {id,token} = req.body;
+//   if (token) {
+//     console.log("inside profile if");
+//     // console.log("test");
+//     jwt.verify(token, jwtSecret, {}, (err, Userdata) => {
+//       if (err) {
+//         throw err;
+//       }
+//       const found_data = Profile.findOne({ email: Userdata.email });
+//       if (found_data) {
+//         console.log("user found");
+//         console.log(found_data);
+//         res.json({ found_data }); // Send the found user data
+//       } else {
+//         res.json({ Userdata });
+//       }
+//       // res.json({ found_data } || { "no data found": Userdata });
+//     });
+//   } else {
+//     res.status(401).json("no token");
+//   }
+// });
 
 app.post("/login", async (req, res) => {
   console.log("inside login");
@@ -99,7 +195,7 @@ app.post("/login", async (req, res) => {
                 // path: "/",
                 // secure: true,
                 // httpOnly: true,
-                expires: new Date(Date.now() + 50000),
+                expires: new Date(Date.now() + 5000000),
               })
               .status(201)
               .json({
@@ -159,7 +255,7 @@ app.post("/register", async (req, res) => {
               // path: '/',
               // secure: true,
               // httpOnly: true,
-              expires: new Date(Date.now() + 5000),
+              expires: new Date(Date.now() + 500000),
             })
             .status(201)
             .json({
@@ -179,7 +275,7 @@ app.post("/register", async (req, res) => {
 app.get("/test", (req, res) => {
   // res.send("test");
   res.json("test ok");
-  res.cookie("abhi", "hello");
+  // res.cookie("abhi", "hello");
 });
 
 app.listen(5000, () => {
