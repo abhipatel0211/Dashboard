@@ -11,7 +11,7 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(cors({ origin: "https://dashboard-abhi.vercel.app/", credentials: true }));
+app.use(cors({ origin: "https://dashboard-abhi.vercel.app", credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
